@@ -6,7 +6,6 @@ import TaskForm from "./TaskForm";
 const TodoList = () => {
 
   const [todoList, setTodoList] = useState([]);
-   const [searchStatus, setSearchStatus] = useState("");
 const [searchVal, setSearchVal] = useState("");
 
 
@@ -14,8 +13,8 @@ const [searchVal, setSearchVal] = useState("");
   return (
     <>
     
-  <TaskForm todoList={todoList} setSearchVal={setSearchVal} searchStatus={searchStatus} searchVal={searchVal} setTodoList={setTodoList} setSearchStatus={setSearchStatus}/>     
-<Dashboard searchStatus={searchStatus} searchVal={searchVal} todoList={todoList} setTodoList={setTodoList}/>
+  <TaskForm todoList={todoList} setSearchVal={setSearchVal} searchVal={searchVal} setTodoList={setTodoList}/>     
+<Dashboard  searchVal={searchVal} todoList={todoList} setTodoList={setTodoList}/>
 
 
     

@@ -9,6 +9,10 @@ const TodoCard = ({title,id,description,status,todoList,setTodoList}) => {
   const deleteTodo=(id)=>{
       setTodoList(todoList.filter((item)=>item.id !==id))
   }
+
+  const editTodo=(id)=>{
+console.log("edit",id)
+  }
   return (
   
     <Card sx={{ maxWidth: 150 ,margin:5,marginTop:4,backgroundImage: "linear-gradient(to right, #e6ccff,  #f2e6ff)"}} key={id}>
@@ -17,7 +21,7 @@ const TodoCard = ({title,id,description,status,todoList,setTodoList}) => {
         <Typography sx={{fontSize:16}}> {status}</Typography>
     
         <CardActions style={{ justifyContent: "flex-end" }}>
-          <EditIcon onClick={() => alert("edit")} />
+          <EditIcon onClick={() => editTodo(id)} />
           <DeleteIcon onClick={() =>deleteTodo(id)} />
         </CardActions>
       </Card>

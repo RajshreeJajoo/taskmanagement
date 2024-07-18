@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SearchOutlined } from "@mui/icons-material";
 
-const TaskForm = ({todoList,setSearchVal,setTodoList,setSearchStatus,searchVal}) => {
+const TaskForm = ({todoList,setSearchVal,setTodoList,searchVal}) => {
 
     const [todos, setTodos] = useState({
         title: "",
@@ -27,15 +27,12 @@ const TaskForm = ({todoList,setSearchVal,setTodoList,setSearchStatus,searchVal})
        
       };
      const handleSearchClick=() =>{
-      if (searchVal === "") { 
-        setTodoList(todoList); 
-        return; 
-      }
+     setTodoList(todoList); 
       const filterBySearch = todoList?.map(item => item.status).filter((item) => {
-         if (item.includes(searchVal)) { 
+         if (item === searchVal) { 
           return item; }
     })
-    setSearchStatus(filterBySearch);
+    setTodoList(filterBySearch);
     }
   return (
    <>
@@ -99,16 +96,15 @@ const TaskForm = ({todoList,setSearchVal,setTodoList,setSearchStatus,searchVal})
             height: 40,
             textAlign: "center",
           }}
-          value={searchVal}
-          onChange={e => setSearchVal(e.target.value)}>
+          onChange={(e) => setSearchVal(e.target.value)}>
         
           <option value="All">All</option>
           <option value="To Do">To Do</option>
           <option value="In Progress">In Progress</option>
           <option value="Done">Done</option>
         </select>
-        <div style={{marginTop:10}}>
-        <SearchOutlined  fontSize="large" onClick={handleSearchClick}/>
+        <div style={{marginTop:10 ,display:'none'}}>
+        <SearchOutlined  fontSize="small" onClick={handleSearchClick}/>
 
         </div>
        
